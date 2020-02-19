@@ -1,0 +1,91 @@
+﻿@model AllModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Boke</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">侯 滔</a>|&nbsp;&nbsp;&nbsp;改变就是好事
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle ">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1" style="padding-left:30px">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">生活感想</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">编程历程</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark disabled" asp-area="">任务管理</a>
+                        </li>
+                        @{ if ((Convert.ToInt32(ViewData["Role"]) & 8) == 8)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="./Users/Index">用户管理</a>
+                                </li>
+                            }
+                            if ((Convert.ToInt32(ViewData["Role"]) & 4) == 4)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="./Articles/Index">内容管理</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="class=" navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"" style="float:right">
+                    @if (ViewData["UserName"] != null)
+                    {
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                                欢迎:  @ViewData["UserName"]   <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" asp-page="./Users/MeIndex" asp-route-id="@ViewData["ID"]">我的首页</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" asp-page="/LogOff">
+                                        退出登录
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <a class="nav-link text-dark" asp-area="" asp-page="/LogOn">登录</a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Boke - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

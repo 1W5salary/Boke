@@ -1,0 +1,26 @@
+﻿@page
+@model Boke.LogOnModel
+@{
+    ViewData["Title"] = "LogOn";
+}
+
+<h1>LogOn</h1>
+<div class="container">
+    <form method="post" asp-page="LogOn">
+        <div>
+        <label>用户名</label>
+        <input asp-for="inputUser.UserName"/>
+        <span asp-validation-for="inputUser.UserName"></span>
+        </div>
+        <div>
+            <label>密 码</label>
+            <input asp-for="inputUser.Password" />
+            <span asp-validation-for="inputUser.Password"></span>
+        </div>
+        <div>
+            <button type="submit">登录</button>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,60 @@
+﻿@page
+@model Boke.UserEditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="user.ID" />
+            <div class="form-group">
+                <label asp-for="user.UserName" class="control-label"></label>
+                <input asp-for="user.UserName" class="form-control" />
+                <span asp-validation-for="user.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.Password" class="control-label"></label>
+                <input asp-for="user.Password" class="form-control" />
+                <span asp-validation-for="user.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.Name" class="control-label"></label>
+                <input asp-for="user.Name" class="form-control" />
+                <span asp-validation-for="user.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.Role" class="control-label"></label>
+                <select class="form-control" asp-for="user.Role" οnchange="selectOnchang(this)">
+                    <option value="0" class="form-control">普通用户</option>
+                    <option value="4" class="form-control">数据管理员</option>
+                    <option value="12" class="form-control">系统管理员</option>
+                </select>
+                <span asp-validation-for="user.Role" class="text-danger"></span>
+                <span asp-validation-for="user.Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.Moneys" class="control-label"></label>
+                <input asp-for="user.Moneys" disabled="disabled" class="form-control" />
+                <span asp-validation-for="user.Moneys" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">返回用户管理首页</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

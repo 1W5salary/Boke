@@ -1,0 +1,49 @@
+﻿@page
+@model Boke.UserDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user.Role)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.user.Moneys)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.user.Moneys)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.user.ID">修改</a> |
+    <a asp-page="./Index">返回用户列表</a>
+</div>

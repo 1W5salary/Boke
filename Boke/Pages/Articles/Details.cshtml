@@ -1,0 +1,17 @@
+﻿@page
+@model ArticleDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<h2>
+    @Model.Article.Tittle
+</h2>
+<time style="padding-right:50px">@Model.Article.CreateTime</time>
+<a class="small" href="#">@Model.Article.Author.Name </a>
+<br>
+@Html.Raw(Model.Article.Content)
+

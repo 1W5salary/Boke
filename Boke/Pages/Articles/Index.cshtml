@@ -1,0 +1,46 @@
+﻿@page
+@model ArticleIndexModel
+
+@{
+    ViewData["Title"] = "文章管理";
+}
+<style>
+    .table td {
+        padding-left: 0;
+    }
+
+        .table td p {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+</style>
+<h1>文章管理</h1>
+
+
+<table class="table" style=" table-layout:fixed;word-break:break-all">
+    <tbody>
+        @foreach (var item in Model.Article)
+        {
+            <tr>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.ID">
+                        <h4>
+                            @item.Tittle
+                        </h4>
+                    </a>
+                    <time style="padding-right:50px">@item.CreateTime</time>
+                    <a class="small" href="#">@item.Author.Name </a><br>
+                    <p>@Html.Raw(item.Content)</p>
+                    <div class="container" style="padding-left:0;">
+                        <a asp-page="./Edit" asp-route-id="@item.ID">修改</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">详细</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">删除</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

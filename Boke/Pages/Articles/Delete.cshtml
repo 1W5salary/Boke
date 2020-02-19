@@ -1,0 +1,39 @@
+﻿@page
+@model Boke.ArticleDeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>你确定要删除这篇文章?</h3>
+<div>
+    <hr />
+    <dl class="">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Article.Tittle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Article.Tittle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Article.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Article.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Article.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Article.Content)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Article.ID" />
+        <input type="submit" value="删除" class="btn btn-danger" /> |
+        <a asp-page="./Index">返回文章管理</a>
+    </form>
+</div>

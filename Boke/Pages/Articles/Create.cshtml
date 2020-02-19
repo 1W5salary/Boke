@@ -1,0 +1,51 @@
+﻿@page
+@model Boke.ArtileCreateModel
+
+@{
+    ViewData["Title"] = "写博客";
+}
+<link rel="stylesheet" href="~/lib/Kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="~/lib/Kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="~/lib/Kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="~/lib/Kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="~/lib/Kindeditor/plugins/code/prettify.js"></script>
+
+<h4>写博客</h4>
+<hr />
+<div class="row">
+    <form method="post" class="col-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Article.Tittle" class="control-label"></label>
+            <input asp-for="Article.Tittle" class="form-control" />
+            <span asp-validation-for="Article.Tittle" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Article.Type" class="control-label"></label>
+            <select class="form-control" asp-for="Article.Type" οnchange="selectOnchang(this)">
+                <option value="编程技术" class="form-control">编程技术</option>
+                <option value="生活感想" class="form-control">生活感想</option>
+            </select>
+            <span asp-validation-for="Article.Type" class="text-danger"></span>
+        </div>
+        <label asp-for="Article.Content" class="control-label"></label>
+        <textarea asp-for="Article.Content" class="form-control" style="width:100%;height:450px;" id="MyEidtor"></textarea>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script>
+     KindEditor.ready(function (K) {
+        window.editor = K.create('#MyEidtor', {
+            fileManagerJson: '@Url.Action("KindFileManager", "Editor")',
+            allowFileManager: true,
+            autoHeightMode : true,
+
+        });
+     });
+</script>

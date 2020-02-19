@@ -1,0 +1,60 @@
+﻿@page
+@model Boke.UserIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>用户管理</h3>
+
+<p>
+    <a asp-page="Create">新建用户</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userList[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userList[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userList[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userList[0].Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userList[0].Moneys)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.userList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moneys)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
